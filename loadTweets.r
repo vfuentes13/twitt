@@ -10,10 +10,10 @@ setwd("D:\\Projets\\Twitter")
 
 ## twitter API connection
 
-api_key <- "qlSWmxgjSwDvxyBliWk8tsmyP"
-api_secret <- "SnI4SIOU7gs8G2xfL2pR5PPGG7BsiwgwCGEiEtUIAm1RuGz2hR"
-access_token <- "788174792331526144-wG0QRZ92q4OPJPjnrQ4nVZR9Y3Flwc0"
-access_token_secret <- "d2xJf3az5FBEFkkmxKwygS7AEYKavqGW32G27eRSR3dTf"
+api_key <- ""
+api_secret <- ""
+access_token <- ""
+access_token_secret <- ""
 setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
 
 ## initialize connection to the database
