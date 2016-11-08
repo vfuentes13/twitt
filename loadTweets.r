@@ -3,43 +3,37 @@
 library(twitteR)
 library(RPostgreSQL)
 library(stringi)
+library(stringr)
 
 setwd("D:\\Projets\\Twitter")
 
 ###################### MAIN ######################
 
 ## twitter API connection
+connectToTwitter()
 
-api_key <- ""
-api_secret <- ""
-access_token <- ""
-access_token_secret <- ""
-setup_twitter_oauth(api_key,api_secret,access_token,access_token_secret)
-
-## initialize connection to the database
-
+## database connection
 drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, dbname = "twitter", host = "localhost", port = 5432, user = "postgres", password = "pwd")
 
-## run main
-
-# test create folder file if not created
-# test and create files according to certain rules
-# calculate stats at the end of an execution
-# work around the rate limit by using several connections
-hashtag <- '#isis'
+## set research variables
+hashtag <- '#burkini'
 nb_tweets <- 1500
-writeLog(".\\log\\test.log", "main", "-----------------------------------------", TRUE)
-writeLog(".\\log\\test.log", "main", "-----------------------------------------", TRUE)
-writeLog(".\\log\\test.log", "main", paste0("research hashtag used: ", hashtag), TRUE)
+logfile <- paste0(".\\log\\", substr(hashtag,2,nchar(hashtag)) ,".log")
 
-for(i in c(0:10))
+## write some log
+writeLog(logfile, "main", "-----------------------------------------", TRUE)
+writeLog(logfile, "main", "-----------------------------------------", TRUE)
+writeLog(logfile, "main", paste0("research hashtag used: ", hashtag), TRUE)
+
+## run 
+for(i in c(0:3))
 {
 	previous <- Sys.Date()-(i+1)
 	now <- Sys.Date()-i
-	writeLog(".\\log\\test.log", "main", "-----------------------------------------", TRUE)
-	writeLog(".\\log\\test.log", "main", paste0("timeframe: between ", previous, " and ", now), TRUE)
-	uploadTweets(hashtag, previous, now, nb_tweets)
+	writeLog(logfile, "main", "-----------------------------------------", TRUE)
+	writeLog(logfile, "main", paste0("timeframe: between ", previous, " and ", now), TRUE)
+	uploadTweets(hashtag, previous, now, nb_tweets, logfile)
 }
 
 

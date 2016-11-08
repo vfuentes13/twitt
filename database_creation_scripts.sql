@@ -1,66 +1,60 @@
--- ## db code ##
-
-
 -- connect to the db
 \c twitter
 
--- set encoding utf8
+-- drop schema twitt cascade;
+
+create schema twitt;
 \encoding UTF8
 
--- list schema
-select nspname from pg_catalog.pg_namespace;
-
--- create schena
-create schema test;
+-- drop table twitt.tuser cascade;
+-- truncate table twitt.tuser cascade;
 
 
-
--- drop table
-drop table test.tweet;
-drop table test.hashtag;
-
--- test select
-
-select * from test.tweet;
-
--- test insert
-
-insert into test.tweet (id, text, created, screen_name, retweet_count, is_retweet) 
-	values('125','blewg;wvsd','10/02/2015','vince',0,FALSE);
-
-select column_name, data_type from information_schema.columnswhere table_name = 'test.tweet';
-
-
----
-
-
-drop table test.tweet cascade;
--- create table 
-drop table test.tweet;
-create table test.tweet
+-- drop table twitt.tuser;
+create table twitt.tuser
 (
 	pkid serial primary key,
-	id varchar(30) unique,
+	user_id varchar(30) unique,
+	screen_name text unique,
+	created timestamp,
+	description text,
+	location text,
+	lang varchar(4),
+	followerCount integer,
+	friendsCount integer,
+	insert_time timestamp	
+);
+
+-- drop table twitt.tweet;
+create table twitt.tweet
+(
+	pkid serial primary key,
+	tweet_id varchar(30) unique,
 	text text,
 	created timestamp,
-	screen_name text,
+	screen_name text references twitt.tuser(screen_name),
 	retweet_count integer,
 	is_retweet boolean,
 	research_hashtag text,
-	insert_time timestamp
-	--primary key(pkid)
+	insert_time timestamp	
 );
 
-drop table test.hashtag;
-create table test.hashtag
+-- drop table twitt.hashtag;
+create table twitt.hashtag
 (
 	pkid serial primary key,
-	tweet_id varchar(30) references test.tweet (id),
+	tweet_id varchar(30) references twitt.tweet(tweet_id),
 	hashtag text
-	--primary key(pkid)
 );
 
-
+-- drop table twitt.mention;
+create table twitt.mention
+(
+	pkid serial primary key,
+	tweet_id varchar(30) references twitt.tweet(tweet_id),
+	mentionning_user_id text references twitt.tuser(user_id),
+	mentionned_user text	
+);
 
 
 
