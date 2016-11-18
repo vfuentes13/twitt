@@ -95,11 +95,12 @@ prepareUserQuery <- function(usr)
 {
 	description_ <- iconv(deleteQuotes(usr$description), to="UTF-8");	
 	location_ <- iconv(deleteQuotes(usr$location), to="UTF-8");	
+	screenName <- iconv(deleteQuotes(usr$screenName), to="UTF-8");
 	
 	user_query <- sprintf(
 		"insert into twitt.tuser (user_id, screen_name, created, description, location, lang, followerCount, friendsCount, insert_time) values ('%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s');", 
 		usr$id, 
-		usr$screenName,
+		screenName,
 		usr$created,
 		description_ ,
 		location_,
