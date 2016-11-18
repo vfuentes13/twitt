@@ -4,10 +4,10 @@ library(twitteR)
 library(RPostgreSQL)
 library(stringi)
 library(stringr)
-
-setwd("D:\\Projets\\Twitter")
+library (twitteR)
 
 ###################### MAIN ######################
+setwd("D:\\Projets\\Twitter")
 
 ## twitter API connection
 connectToTwitter()
@@ -17,7 +17,7 @@ drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, dbname = "twitter", host = "localhost", port = 5432, user = "postgres", password = "pwd")
 
 ## set research variables
-hashtag <- '#burkini'
+hashtag <- '#trump'
 nb_tweets <- 1500
 logfile <- paste0(".\\log\\", substr(hashtag,2,nchar(hashtag)) ,".log")
 
@@ -27,7 +27,7 @@ writeLog(logfile, "main", "-----------------------------------------", TRUE)
 writeLog(logfile, "main", paste0("research hashtag used: ", hashtag), TRUE)
 
 ## run 
-for(i in c(0:3))
+for(i in c(0:1))
 {
 	previous <- Sys.Date()-(i+1)
 	now <- Sys.Date()-i
