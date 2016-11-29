@@ -95,7 +95,7 @@ prepareUserQuery <- function(usr)
 {
 	description_ <- iconv(deleteQuotes(usr$description), to="UTF-8");	
 	location_ <- iconv(deleteQuotes(usr$location), to="UTF-8");	
-	screenName <- iconv(deleteQuotes(usr$screenName), to="UTF-8");
+	screenName <- iconv(deleteQuotes(usr$screenName), to="UTF-8");	
 	
 	user_query <- sprintf(
 		"insert into twitt.tuser (user_id, screen_name, created, description, location, lang, followerCount, friendsCount, insert_time) values ('%s', '%s', '%s', '%s', '%s', '%s', %s, %s, '%s');", 
@@ -129,13 +129,13 @@ insertTweetData <- function(tweet_list, research_hashtag, logfile)
 			dbGetQuery(con, hashtag_query)
 		}		
 		
-		atmention <- separateElements(tweet_list[[i]]$text, "@", logfile)
-		author <- getUser(tweet_list[[i]]$screenName)$id
-		for(k in seq_along(atmention))
-		{
-			at_query <- prepareAtMentionQuery(atmention[k], tweet_list[[i]]$id, author)			
-			dbGetQuery(con, at_query)
-		}		
+		#atmention <- separateElements(tweet_list[[i]]$text, "@", logfile)
+		#author <- getUser(tweet_list[[i]]$screenName)$id
+		#for(k in seq_along(atmention))
+		#{
+		#	at_query <- prepareAtMentionQuery(atmention[k], tweet_list[[i]]$id, author)			
+		#	dbGetQuery(con, at_query)
+		#}		
 	}
 }
 
@@ -169,8 +169,8 @@ uploadTweets <- function(hashtag, previous, now, nb_tweets, logfile)
 	writeLog(logfile, "main", paste0(actual_nb_tweets, " were returned, including ", nb_clean, " non-retweets"), TRUE)
 
 
-	writeLog(logfile, "main", "uploading users in the database", TRUE)
-	try(insertUserData(clean_tweet_list))
+	#writeLog(logfile, "main", "uploading users in the database", TRUE)
+	#try(insertUserData(clean_tweet_list))
 	
 
 	writeLog(logfile, "main", "uploading tweets in the database", TRUE)
@@ -191,8 +191,8 @@ uploadTweets <- function(hashtag, previous, now, nb_tweets, logfile)
 		nb_clean <- length(clean_tweet_list)
 		writeLog(logfile, "main", paste0(actual_nb_tweets, " were returned, including ", nb_clean, " non-retweets"), TRUE)
 
-		writeLog(logfile, "main", "uploading users in the database", TRUE)
-		try(insertUserData(clean_tweet_list))
+		#writeLog(logfile, "main", "uploading users in the database", TRUE)
+		#try(insertUserData(clean_tweet_list))
 		
 		writeLog(logfile, "main", "uploading tweets in the database", TRUE)
 		try(insertTweetData(clean_tweet_list, hashtag, logfile))

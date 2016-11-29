@@ -32,7 +32,7 @@ create table twitt.tweet
 	tweet_id varchar(30) unique,
 	text text,
 	created timestamp,
-	screen_name text references twitt.tuser(screen_name),
+	screen_name text,-- references twitt.tuser(screen_name),
 	retweet_count integer,
 	is_retweet boolean,
 	research_hashtag text,
@@ -43,7 +43,7 @@ create table twitt.tweet
 create table twitt.hashtag
 (
 	pkid serial primary key,
-	tweet_id varchar(30) references twitt.tweet(tweet_id),
+	tweet_id varchar(30),-- references twitt.tweet(tweet_id),
 	hashtag text
 );
 
