@@ -14,7 +14,7 @@ The tweets are downloaded along with all the relevant information available thro
 
 At this point, this is a simple data model composed of two tables as descibed below:
 
-# Table Tweet 
+### Table Tweet 
 
 Table that has all information contained in a tweet
 
@@ -30,7 +30,7 @@ is_retweet | boolean | a flag indicated whether a tweet is a retweet or not
 research_hashtag | text | the hashtag used as an input by the script's user when this tweet was downloaded
 insert_time | timestamp | the datetime the tweet was inserted in the database
 
-# Table Hashtag 
+### Table Hashtag 
 
 Table that has each hashtag for a given tweet_id as a separate record
 

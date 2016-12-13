@@ -235,7 +235,7 @@ drv <- dbDriver("PostgreSQL")
 con <- dbConnect(drv, dbname = "twitter", host = "localhost", port = 5432, user = "postgres", password = "pwd")
 
 ## set research variables
-hashtag <- '#trump'
+hashtag <- '#amazon'
 nb_tweets <- 1500
 logfile <- paste0(".\\log\\", substr(hashtag,2,nchar(hashtag)) ,".log")
 
@@ -244,15 +244,23 @@ writeLog(logfile, "main", "-----------------------------------------", TRUE)
 writeLog(logfile, "main", "-----------------------------------------", TRUE)
 writeLog(logfile, "main", paste0("research hashtag used: ", hashtag), TRUE)
 
-## run 
-for(i in c(0:20))
-{
-	previous <- Sys.Date()-(i+1)
-	now <- Sys.Date()-i
-	writeLog(logfile, "main", "-----------------------------------------", TRUE)
-	writeLog(logfile, "main", paste0("timeframe: between ", previous, " and ", now), TRUE)
-	uploadTweets(hashtag, previous, now, nb_tweets, logfile)
-}
+## history run to be done more clearly 
+#for(i in c(0:1))
+#{
+#	previous <- Sys.Date()-(i+1)
+#	now <- Sys.Date()-i
+#	writeLog(logfile, "main", "-----------------------------------------", TRUE)
+#	writeLog(logfile, "main", paste0("timeframe: between ", previous, " and ", now), TRUE)
+#	uploadTweets(hashtag, previous, now, nb_tweets, logfile)
+#}
+
+# daily run
+previous <- Sys.Date()-1
+now <- Sys.Date()
+writeLog(logfile, "main", "-----------------------------------------", TRUE)
+writeLog(logfile, "main", paste0("timeframe: between ", previous, " and ", now), TRUE)
+uploadTweets(hashtag, previous, now, nb_tweets, logfile)
+
 
 
 ## disconnect from database
