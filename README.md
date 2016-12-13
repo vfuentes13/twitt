@@ -1,4 +1,7 @@
+
+
 # twitt
+
 
 This repository will be used to share the R code to get data from twitter through twitteR API.
 
@@ -7,7 +10,7 @@ The aim is to provide a tool to automatically download all the tweets during a t
 The tweets are downloaded along with all the relevant information available throught the API and for further analysis we decide to store separately the hashthags.
 
 
-1) Data model: database_creation_script.sql
+## 1) Data model: database_creation_script.sql
 
 At this point, this is a simple data model composed of two tables as descibed below:
 
@@ -30,7 +33,7 @@ tweet_id - varchar(30) - the unique tweet id provided by the API, use this to ma
 hashtag - text - the hashtag or one of the hashtag in the tweet text
 
 
-2) _functions.R
+## 2) _functions.R
 
 All the functions used by the main script, including the following:
 
@@ -43,13 +46,13 @@ insertTweetData() - insert the data in the tables
 uploadTweets() - main function that loops until all tweets are downloaded
 connectToTwitter() - connect to the API using credentials from a separate file
 
-3) loadTweet.R
+## 3) loadTweet.R
 
 Main script that calls the functions defined in the file above.
 
 Connects to the API and to the database, defines the tweet search parameters (hashtag and timeframe), closes db connection.
 
 
-4) launcher.ps1
+## 4) launcher.ps1
 
 Powershell script used to launch loadTweet.R so that it can be automated.
