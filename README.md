@@ -45,14 +45,14 @@ hashtag | text | the hashtag or one of the hashtag in the tweet text
 
 All the functions used by the main script, including the following:
 
-deleteQuotes() - format strings to create SQL statements
-separateElements() - separate hashtags from a tweet text
-prepareTweetQuery() - format the query used to insert data in table Tweet
-writeLog() - manage log files for debugging purposes
-prepareHashtagQuery() - format the query used to insert data in table Hashtag
-insertTweetData() - insert the data in the tables
-uploadTweets() - main function that loops until all tweets are downloaded
-connectToTwitter() - connect to the API using credentials from a separate file
+* deleteQuotes(): format strings to create SQL statements
+* separateElements(): separate hashtags from a tweet text
+* prepareTweetQuery(): format the query used to insert data in table Tweet
+* writeLog(): manage log files for debugging purposes
+* prepareHashtagQuery(): format the query used to insert data in table Hashtag
+* insertTweetData(): insert the data in the tables
+* uploadTweets(): main function that loops until all tweets are downloaded
+* connectToTwitter(): connect to the API using credentials from a separate file
 
 ## 3) loadTweet.R
 
