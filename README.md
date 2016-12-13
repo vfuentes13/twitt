@@ -16,6 +16,8 @@ At this point, this is a simple data model composed of two tables as descibed be
 
 # Table Tweet 
 
+Table that has all information contained in a tweet
+
 field name | field type | field definition
 ---------- | ---------- | ----------------
 pkid | serial | the numeric autoincremented primary key of the table
@@ -30,11 +32,13 @@ insert_time | timestamp | the datetime the tweet was inserted in the database
 
 # Table Hashtag 
 
-field name - field type - field definition
+Table that has each hashtag for a given tweet_id as a separate record
 
-pkid - serial - the numeric autoincremented primary key of the table
-tweet_id - varchar(30) - the unique tweet id provided by the API, use this to map to table Tweet 
-hashtag - text - the hashtag or one of the hashtag in the tweet text
+field name | field type | field definition
+---------- | ---------- | ----------------
+pkid | serial | the numeric autoincremented primary key of the table
+tweet_id | varchar(30) | the unique tweet id provided by the API, use this to map to table Tweet 
+hashtag | text | the hashtag or one of the hashtag in the tweet text
 
 
 ## 2) _functions.R
