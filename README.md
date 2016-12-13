@@ -14,19 +14,23 @@ The tweets are downloaded along with all the relevant information available thro
 
 At this point, this is a simple data model composed of two tables as descibed below:
 
--- Table Tweet -- field name - field type - field definition
+# Table Tweet 
 
-pkid - serial - the numeric autoincremented primary key of the table
-tweet_id - varchar(30) - the unique tweet id provided by the API
-text - text - the actual text written by the user as a tweet
-created - timestamp - the datetime the tweet was created
-screen_name - text - the user name of the tweet author
-retweet_count - integer - the number of times the tweet by retweeted
-is_retweet - boolean - a flag indicated whether a tweet is a retweet or not
-research_hashtag - text - the hashtag used as an input by the script's user when this tweet was downloaded
-insert_time - timestamp - the datetime the tweet was inserted in the database
+field name | field type | field definition
+---------- | ---------- | ----------------
+pkid | serial | the numeric autoincremented primary key of the table
+tweet_id | varchar(30) | the unique tweet id provided by the API
+text | text | the actual text written by the user as a tweet
+created | timestamp | the datetime the tweet was created
+screen_name | text | the user name of the tweet author
+retweet_count | integer | the number of times the tweet by retweeted
+is_retweet | boolean | a flag indicated whether a tweet is a retweet or not
+research_hashtag | text | the hashtag used as an input by the script's user when this tweet was downloaded
+insert_time | timestamp | the datetime the tweet was inserted in the database
 
--- Table Hashtag -- field name - field type - field definition
+# Table Hashtag 
+
+field name - field type - field definition
 
 pkid - serial - the numeric autoincremented primary key of the table
 tweet_id - varchar(30) - the unique tweet id provided by the API, use this to map to table Tweet 
