@@ -1,5 +1,3 @@
-
-
 # twitt
 
 
@@ -64,3 +62,9 @@ Connects to the API and to the database, defines the tweet search parameters (ha
 ## 4) launcher.ps1
 
 Powershell script used to launch loadTweet.R so that it can be automated.
+
+## 5) analysis.R
+
+In this file we have functions to retrieve data that we previously stored in our databse previously.
+
+We have a set of functions that uses text mining and that ultimtely produces a word cloud for a given day's worth of tweets.
